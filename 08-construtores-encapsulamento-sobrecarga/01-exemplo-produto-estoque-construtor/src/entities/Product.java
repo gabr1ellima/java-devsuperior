@@ -1,39 +1,39 @@
 package entities;
 
 public class Product {
-
+	// ATRIBUTOS
 	public String name;
 	public double price;
 	public int quantity;
 
-	public Product() {
-	}
-
+	// CONSTRUTOR
 	public Product(String name, double price, int quantity) {
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
-	public Product(String name, double price) {
-		this.name = name;
-		this.price = price;
-	}
-
+	// MÉTODO QUE CALCULA O ESTOQUE PELO PREÇO UNITÁRIO PELA QUANTIDADE
 	public double totalValueInStock() {
 		return price * quantity;
 	}
 
+	// MÉTODO PARA ADD PRODUTOS NO ESTOQUE
 	public void addProducts(int quantity) {
-		this.quantity += quantity;
+		this.quantity += quantity; // soma o argumento 'quantity' ao atributo da classe this.quantity
 	}
 
-	public void removeProducts(int quantity) {
+	// MÉTODO
+	public void removeProdutcs(int quantity) {
 		this.quantity -= quantity;
 	}
 
+	// toString - CONVERTE O OBJETO PARA STRING
+	@Override
 	public String toString() {
-		return name + ", $ " + String.format("%.2f", price)
+		return name
+				+ ", $ "
+				+ String.format("%.2f", price)
 				+ ", "
 				+ quantity
 				+ " units, Total: $ "

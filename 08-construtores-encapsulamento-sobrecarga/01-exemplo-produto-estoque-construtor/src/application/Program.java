@@ -1,44 +1,39 @@
-package application;
+package Application;
 
+import Entities.Product;
+
+import java.util.Locale;
 import java.util.Scanner;
-import entities.Product;
 
-public class Program {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
 
-		System.out.println("Enter product data: ");
+        System.out.println("Entre com os dados do produto: ");
+        System.out.print("Nome: ");
+        String name = sc.nextLine();
+        System.out.print("Preço: ");
+        double price = sc.nextDouble();
+        System.out.print("Quantidade em estoque: ");
+        int quantity = sc.nextInt();
 
-		System.out.print("Name: ");
-		String name = sc.nextLine();
+        Product product = new Product(name, price, quantity);
 
-		System.out.print("Price: ");
-		double price = sc.nextDouble();
+        System.out.println("\nDados do produto: " + product.toString());
 
-		System.out.print("Quantity in stock: ");
-		int quantity = sc.nextInt();
+        System.out.print("\nEntre com o número de produtos adicionados ao estoque: ");
+        quantity = sc.nextInt();
+        product.addProducts(quantity);
 
-		Product product = new Product(name, price, quantity);
+        System.out.println("\nAtualização: " + product);
 
-		System.out.println();
-		System.out.println("Product data: " + product);
+        System.out.print("\nEntre com a quantidade de produtos removidos do estoque: ");
+        quantity = sc.nextInt();
+        product.removeProdutcs(quantity);
 
-		System.out.println();
-		System.out.print("Enter the number of products to be added in stock: ");
-		quantity = sc.nextInt();
-		product.addProducts(quantity);
+        System.out.println("\nAtualização: " + product);
 
-		System.out.println();
-		System.out.println("Updated data: " + product);
-
-		System.out.println();
-		System.out.print("Enter the number of products to be removed from stock: ");
-		quantity = sc.nextInt();
-		product.removeProducts(quantity);
-
-		System.out.println();
-		System.out.println("Updated data: " + product);
-
-		sc.close();
-	}
+        sc.close();
+    }
 }

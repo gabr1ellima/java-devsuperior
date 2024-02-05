@@ -5,10 +5,10 @@ public class Account {
 	private String accountHolder;
 	private double balance;
 	
-	public Account(int accountNumber, String accountHolder, double balance) {
+	public Account(int accountNumber, String accountHolder, double initialDeposit) {
 		this.accountNumber = accountNumber;
 		this.accountHolder = accountHolder;
-		this.balance = balance;
+		deposit(initialDeposit);
 	}
 	
 	public Account(int accountNumber, String accountHoulder) {
@@ -41,7 +41,11 @@ public class Account {
 	}
 	
 	public void withdraw(double withdraw) {
-		balance = balance - withdraw - 5;
+		if (withdraw == 0) {
+			balance = balance - withdraw;
+		} else {
+			balance = balance - withdraw - 5;
+		}
 	}
 	
 	public String toString() {
